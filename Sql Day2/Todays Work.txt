@@ -1,0 +1,66 @@
+--string Functions
+select Ascii('A')
+select char(65)
+select lower('HELLO WORLD')
+select replace('Jack and Jill','J','BL')
+select substring('hello world',2,6)
+select concat('Happy',' Valentines', ' Day')
+
+select upper(Name) from tblemployee
+
+--date functions
+
+select getdate()
+select datediff(yy,'01/02/2001',getdate())
+select dateadd(mm,5,getdate())
+select datename(mm,getdate())
+
+select datepart(hh,getdate())
+
+--mathematics
+select sin(30)
+select floor(45.05)
+select pi()
+
+--wild card based select %,_,[],^
+
+select Name from tblEmployee
+where name not like 'Ben\%' escape'\'
+
+select Name from tblEmployee
+where name not like 'Ben[%]%'
+
+select Name, Salary from tblEmployee
+where salary not between 4800 and 6500
+
+select Name from tblEmployee
+where Departmentid is not null
+
+select Name, salary as 'EmpSalary', Departmentid from tblemployee
+order by Empsalary desc
+
+select * from tblEmployee
+
+select departmentid,avg(salary) from tblemployee
+group by Departmentid
+having avg(salary)>5000
+order by Departmentid
+
+
+Select concat(e1.Name, ' Works for Department No: ', e1.Departmentid)
+     from tblEmployee e1, tblEmployee e2
+     where e1.Departmentid=e2.Departmentid
+
+	 select * from tblEmployee
+	 select * from tblDepartment
+
+	 select * from tblemployee a full outer join tbldepartment b
+	 on a.Departmentid=b.DeptId
+
+	 select * from tblemployee a,tbldepartment b
+	 where a.Departmentid=b.DeptId
+
+	 select a.Departmentid, count(ID) as 'No of Employees',sum(Salary) as 'Total Salary'
+	 from tblEmployee a, tblDepartment b
+	 where a.Departmentid=b.DeptId
+	 group by a.Departmentid

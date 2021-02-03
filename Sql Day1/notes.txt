@@ -1,0 +1,15 @@
+SQL and its Components
+-DDL - Data Definition Language (Create,Alter,Drop,Truncate)
+-DML - Data Manipulation Language (Insert,Update,Delete)
+-DQL - Data Query Language (Select)
+-TCL - Transaction Control Language (Commit,Rollback)
+-DCL - Data Control Language (Grant ,Revoke) - DBA
+
+RDBMS works on the Relational Alegebra Concepts
+
+Selection  -- Where Predicate
+Projection -- column List
+Join
+Intersection
+Difference
+Divide
