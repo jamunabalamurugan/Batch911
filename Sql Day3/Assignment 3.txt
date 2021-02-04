@@ -1,0 +1,13 @@
+1.Display the details from Customer table who is from country Germany
+2.Display the  fullname of the employee  
+3.Display the  customer details  who has Fax number
+4.Display the customer details whoes name holds second letter as U
+5.Select order Details where unit price is greater than 10 and less than 20
+6.Display order details which contains shipping date and arrange the order by date
+7.Print the orders shipped by ship name 'La corne d'abondance' between 2 dates(Choose dates of your choice)
+8.Print the products supplied by 'Exotic Liquids'
+9.Print the average quantity ordered for every product
+10.Print all the Shipping company name and the ship names if they are operational
+11.Print all Employees with Manager Name
+12.Print the bill for a given order id .bill should contain Productname, Categoryname,price after discount
+13.Print the Total price of orders which have the products supplied by 'Exotic Liquids' if the price is > 50 and also print it by Shipping company's Name
