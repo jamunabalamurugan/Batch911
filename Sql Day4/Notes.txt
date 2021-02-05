@@ -1,0 +1,13 @@
+Modes of transaction :
+
+
+1. Autocommit Transactions Autocommit mode is the default transaction management mode of SQL Server. Every T-SQL statement is committed or rolled back when it is completed. If a statement completes successfully, it is committed; if it encounters any errors, it is bound to roll back. A SQL Server connection operates in autocommit mode 
+ 
+2. Explicit Transactions : Explicit transactions are those in which you explicitly control when the transaction begins and when it ends. T-SQL scripts for this mode use the BEGIN TRANSACTION, COMMIT TRANSACTION, and ROLLBACK TRANSACTION statements. Explicit transaction mode lasts only for the duration of the transaction. When the transaction ends, the connection returns to the transaction mode it was in before the explicit transaction was started.
+ 
+3. Implicit Transactions When you connect to a database using SQL Server Management Studio and execute a DML query, the changes are automatically saved. This occurs because, by default, the connection is in autocommit transaction mode. 
+
+You can set the database connection to implicit transaction mode by using SET IMPLICIT TRANSACTIONS ON|OFF.
+
+ 
+4. Batch-Scoped Transactions A connection can be in batch-scoped transaction mode, if the transaction running in it is Multiple Active Result Sets (MARS) enabled. Basically MARS has an associated batch execution environment, since it allows ADO .NET to take advantage of SQL Server  capability of having multiple active commands on a single connection object.

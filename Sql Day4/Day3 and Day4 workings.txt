@@ -1,0 +1,249 @@
+--Views
+create view vWbyDepart
+as
+select ID,Name,Gender,DeptName
+from tblEmployee join tblDepartment
+on tblEmployee.Departmentid=tblDepartment.DeptId
+
+sp_helptext vWbyDepart
+
+select * from tblemployee
+
+select Gender,count(Name) from vWbyDepart
+group by Gender
+
+insert into vWbyDepart
+values(100,'Dummy','Others')
+
+create view vWtest
+as
+select Name,Gender,Departmentid
+from tblEmployee
+
+select * from vWtest
+
+drop view vWtest
+
+create or alter view vWtest
+as select Name,Gender,Salary,Departmentid from tblemployee
+
+insert into vWtest values('Dummy','Others',5)
+update vWtest
+set Gender='Male'
+where Name like'Du%'
+
+delete from vWtest where Name ='Dummy'
+
+create a view to store EmpName, Salary,Hire_date,commision and DeptName for all Salesman
+
+Begin
+declare @v_Result int
+declare @a int = 50
+declare @b int = 100
+set @v_Result = @a + @b
+select @v_Result
+End
+
+begin
+declare @count int =0
+while @count < 10
+begin
+set @count = @count+1
+if @count = 5
+continue
+if @count=7 
+break
+print @@rowcount
+end
+end
+
+begin try
+declare @data int, @msg varchar(200)
+set @data=10/0
+print @data
+end try
+begin catch
+set @msg=(select ERROR_MESSAGE())
+print @msg
+select ERROR_NUMBER() as ErrorNumber, ERROR_LINE() as LineNumber, ERROR_SEVERITY() as Severity,
+ERROR_MESSAGE() as Message
+end catch
+
+--transactions
+begin transaction
+insert into tblemployee values('transaction',10000,'Female',7)
+
+save transaction t1
+update tblemployee
+set salary=12000
+where Name='Batch911'
+
+save transaction t2
+delete from tblemployee where Name='Ben%'
+rollback transaction t2
+commit
+select * from tblemployee
+
+--explicit (rollback, commit, save)
+--implicit (auto commit  - rollback gap)
+
+drop table tblstudent
+begin transaction 
+create table tblstudent(sid varchar(10) primary key, sname nvarchar(20))
+save transaction s1
+insert into tblstudent values('S001','Sandhya')
+save transaction s2
+select * from tblstudent
+rollback tran s1
+select * from tblstudent
+rollback
+
+select * from tblstudent
+
+begin tran t1
+create table books(bid int,bname varchar(20))
+insert into books values(1,'RDBMS')
+select * from books
+commit tran t1
+rollback tran
+
+drop table books
+
+begin try
+declare @data int
+set @data='Hi'
+end try
+begin catch
+--print the error
+--select ERROR_MESSAGE() // 1st way
+--throw   //2nd way
+raiserror('Data type Mismatch',16,1)
+end catch
+
+--stored procedures
+sp_helptext sp_sample
+create or alter procedure sp_sample
+as
+begin
+--select 'Hello'
+--select * from tblEmployee
+delete from tblemployee where ID=1043
+end
+
+execute sp_sample
+
+--with input parameters
+create procedure proc_Parameter(@name varchar(20))
+as
+begin
+select concat('Hello ', ' Welcome ',@name)
+end
+
+exec proc_Parameter 'Somesh'
+
+create procedure sp_GetEmpdetails(@empid int, @Gender varchar(20))
+as
+begin
+select e.Name,e.Salary,d.DeptName from tblEmployee e, tblDepartment d
+where e.Departmentid=d.DeptId and ID=@empid and Gender=@Gender
+end
+
+exec sp_GetEmpdetails 'Female',1040 -- one method of procedure call
+exec sp_GetEmpdetails @empid=1040,@Gender='Female' --second method
+
+create or alter proc sp_updateSalary (@increment int,@empid int)
+as
+begin
+declare @newsalary int
+set @newsalary=(select salary from tblemployee where ID=@empid)
+
+if(@newsalary < 8000)
+begin
+set @newsalary=@newsalary+@increment
+print @newsalary
+end
+else
+begin
+print 'Salary is anyways good'
+end
+end
+
+exec sp_updateSalary 2000,1035
+
+--procedure with output parameters
+
+create or alter procedure sp_TaxCalculator(@eid int, @netsalary int output)
+as
+begin
+declare @tempsal int
+set @tempsal=(select Salary*12 from tblemployee where ID=@eid)
+if (@tempsal>70000)
+begin
+set @netsalary=@tempsal 
+end
+else
+begin
+print 'Annual salary is less than 70k'
+end
+end
+
+declare @outsalary int 
+declare @taxamt float
+declare @b int
+exec sp_TaxCalculator 3,@outsalary output
+select @taxamt=@outsalary/100
+print 'Tax Amount for Employee is' + ' ' + cast(@taxamt as varchar(12))
+
+--retun parameter
+create or alter proc sp_TotalDept
+as
+begin
+return (select count(DeptId) from tblDepartment)
+end
+
+declare @totdept int
+exec @totdept=sp_TotalDept
+select @totdept
+
+create proc proc_2
+as
+begin
+return (select DeptName from tblDepartment) -- gives error non integer
+end
+
+declare @dname varchar(20)
+exec @dname=sp_TotalDept
+select @dname
+
+--procedure with error handling
+create or alter proc Sp_errorproc
+as
+begin
+begin try
+select salary + Name from tblemployee where ID=3
+end try
+begin catch
+throw
+end catch
+end
+
+exec Sp_errorproc
+
+select * from tblemployee
+--usage of case in select
+drop table tblperformance
+
+select * from tblperformance
+create table tblPerformance(Eid int references tblemployee(ID), rating float(2))
+insert into tblPerformance values(2,5.0),(3,4.3),(4,4.5),(5,3.2)
+
+select Eid,rating,
+Case
+when rating=5 then 'Excellent'
+when rating >4.5 and rating <4.3 then 'Very Good'
+when rating>4  then 'Good'
+else 'Poor'
+end as 'Rating Description'
+from tblPerformance
+
+

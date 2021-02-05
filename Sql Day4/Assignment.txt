@@ -1,0 +1,22 @@
+
+
+1. Write a procedure that shows the customer who has placed the maximum number of orders
+2. Write a procedure to display the list of products that are out of stock
+3. Write a procedure to enhance the above which returns the count of products that are out of stock
+
+
+Part 2 Assignment
+
+1. Write a procedure to give out the Salary and the Name for any given Employee Id. Display the output by formatting in a meaningful manner
+
+2. Write a procedure to display the count of employees earning a salary > 2000
+
+3. Create a stored procedure that takes Deptname and Location from the user and inserts one record in the Department table (assuming DeptNo id an identity column, if not give Dept No also as a parameter
+
+4. Create a Procedure to calculate tax for a given employee as :
+   case employees annualsalary is > 15000 and <= 20000 then 5% tax to be deducted from annualsalary
+  case annualsalary >20000 then 12% tax to be deducted
+else 'No tax to be paid' 
+
+5. Create a stored procedure to generate multiplication tables up to a given number.
+
