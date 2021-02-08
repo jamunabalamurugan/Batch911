@@ -1,0 +1,250 @@
+alter table <table name> nocheck constraint <constraint name> -- disabling
+
+alter table <tablename> check constraint <constraint name>
+----------------------------------------------
+@id = 1048
+
+ID     Name   Salary  Gender   Dept id
+1048	AAA	5000	Male	4
+---------------------------------------------
+
+sp_helptext sp_addmessage
+
+exec sp_addmessage 51000,14,'Data type Mismatch,Failed to Convert'
+exec sp_dropmessage 51000
+select * from sys.messages  
+------------------------------------------------
+begin try
+declare @data int
+set @data='Hi'
+end try
+begin catch
+raiserror(51000,16,1)
+end catch
+
+------------------------------------------------
+--Functions
+
+-- scalar type
+-- Table Valued 
+   -- Single Statement
+   -- Multiple Statement
+   --scalar function examples
+create function fnAdd2Nos
+(
+@a int, @b int)
+returns int
+as
+begin
+return @a + @b
+end
+
+select dbo.fnAdd2Nos(10,20) -- or
+print dbo.fnAdd2Nos(20,40)
+
+----------------------------------------------
+--create a function to calculate the area of a rectangle
+--ex :2 
+create function calculatearea(@l int, @b int)
+returns int
+as begin
+declare @area int
+set @area=@l *@b
+return @area
+end
+use Northwind
+select dbstudy.dbo.calculatearea(4,3) //3 part qualifier
+
+--Assignment
+--Write a function to calculate the age in years of a person by taking 
+-- the Date of Birth from the user
+
+
+-- Inline table valued functions
+
+create function fngetDept(@deptid int)
+returns table 
+as
+return (select Name,Gender,Salary from tblemployee where Departmentid=@deptid)
+
+select * from fngetDept(3)
+
+--multiple statement table valued functions
+use Northwind
+go
+
+select * from customers
+create or alter function GetCustomersByCountry
+(@country varchar(20))
+returns 
+@CustomerCountry table(cust_id varchar(10),
+cust_name varchar(30),
+cust_city varchar(20))
+as
+begin
+insert into @CustomerCountry
+select CustomerID,ContactName,City from Customers
+where Country=@country
+
+if @@ROWCOUNT = 0
+begin
+insert into @CustomerCountry
+values(' ','No Customers Found',null)
+end
+
+return
+end
+
+select * from CustomerCountry
+select * from GetCustomersByCountry('Germany')
+
+--------------------------------------------------------
+
+--Triggers
+--saved set of SQL statements that get fired/invoked automatically on any DML operations
+--magic tables ( 2 in no. Inserted Table , Deleted Magic Table)
+
+1. create trigger trgiggerInsertEmployee
+on tblEmployee
+for Insert
+as
+begin
+select * from Inserted -- to show that the table values inserted are available in magic table
+end
+
+2. create trigger trigDeleteEmployee
+on tblemployee
+for delete
+as
+begin 
+select * from deleted
+end
+
+
+drop trigger trigUpdate
+
+3. create trigger trigUpdateEmployee
+on tblemployee
+for update
+as
+begin
+select * from deleted 
+select * from Inserted
+end
+
+insert into tblemployee values('TriggerSample',25000,'Others',1)
+
+delete from tblemployee where ID=1046
+
+select * from tblemployee
+
+update tblemployee
+set Salary =10000
+where ID=3
+
+select * from inserted
+
+create table EmployeeAudit
+(data varchar(200))
+
+4. create or alter Trigger InsertintoAudit
+on tblemployee
+for insert
+as
+begin
+declare @id int
+declare @ename varchar(20)
+select @id = ID from inserted 
+select @ename= Name from inserted
+insert into EmployeeAudit
+values('New Employee having Id '  + cast(@id as nvarchar(5)) 
++  'by Name' + @ename + ' is added at ' + cast(getdate() as nvarchar(20)))
+end
+
+
+
+insert into tblemployee values('Snithavi',6000,'Female',2)
+
+select * from EmployeeAudit
+select * from tblemployee
+
+5. create or alter trigger trigUp
+on tblemployee
+for update
+as
+begin
+declare @id int
+declare @oldsalary float, @newsalary float
+declare @name varchar(20)
+declare @auditstring varchar(100)
+select @id= ID from inserted
+select @oldsalary = Salary from deleted
+select @newsalary = Salary from Inserted
+set @auditstring=concat(@id,@oldsalary,@newsalary)
+select  @auditstring
+end
+
+update tblemployee set salary = 4036
+where ID=5
+
+6. create trigger triginstead
+on tblemployee
+instead of insert
+as
+declare @ename varchar(20),@sal float,@gen char(7),@deptid int, @Auditinfo varchar(200)
+select @ename=Name from inserted 
+select @sal =Salary from inserted
+select @gen = Gender from Inserted
+select @deptid=DepartmentId from inserted
+set @auditinfo='Inserted Record -- Instead of Trigger'
+begin
+begin transaction
+if(@sal<=4000)
+begin
+raiserror('Cannot Insert when salary < 4000',16,1)
+rollback 
+end
+else
+begin
+insert into tblemployee values(@ename,@sal,@gen,@deptid)
+insert into EmployeeAudit values('Record logged')
+commit
+print @auditinfo
+end
+end
+
+insert into tblemployee values('test1',4500,'Female',1)
+insert into tblemployee values('test2',3500,'Male',2)
+
+select * from tblemployee
+select * from EmployeeAudit
+
+------------------------------------------------------------
+
+--Cursors (database objects that allows traversal of records one by one)
+-- it a a memory location
+-- 2 types of cursors are available 1. Implicit, 2. Explicit
+
+declare 
+@emp_name varchar(max),@sal float
+
+ step 1: declare my_cursor1 cursor
+for select Name,Salary from tblEmployee
+
+step 2: open my_cursor1
+step 3: fetch next from my_cursor1 into @emp_name,@sal
+while @@FETCH_STATUS = 0
+begin
+if(@sal>5000)
+ begin
+ print @emp_name + ' ' + cast(@sal as varchar)
+ end
+ else
+ begin
+ print @emp_name + '  ' + 'earns less than 5000'
+ end
+ fetch next from my_cursor1 into @emp_name,@sal
+ end
+step 4:  close my_cursor1;
+
+step 5: deallocate my_cursor1;

@@ -1,0 +1,55 @@
+What is the difference between functions and procedures?
+
+1. A function must return a value whereas a procedure never returns a value.
+
+2. The procedure can have parameters of both input and output whereas a function can have only input parameters.
+
+3. In a procedure, we can perform Select, Update, Insert, and Delete operations whereas function can only be used to perform select operations. It cannot be used to perform insert, update, and delete operations that can change the state of the database.
+
+4. A procedure provides the options to perform transaction management, error handling, etc whereas these operations are not possible in a function.
+
+5. We call a procedure using EXECUTE/ EXEC command whereas a function is called by using SELECT command only.
+
+6. From a procedure, we can call another procedure or a function whereas from a function we can call another function but not a procedure.
+
+7. UDF can be used in the SQL statements anywhere in the WHERE/HAVING/SELECT section where as Stored procedures cannot be.
+
+What are the differences between Inline/Single Line and multi-statement Table-valued function?
+
+1. In an Inline Table-Valued Function, the returns clause cannot contain the structure of the table that the function is going to return whereas in the multi-statement table-valued function we can define the structure of the table that the function is going to return.
+
+2. The inline table value function cannot have BEGIN and END blocks whereas the multi-statement function can have the Begin and End blocks.
+
+3. Inline table-valued functions are better for performance than the multi-statement table-valued function. So, if the given task can be achieved using an inline table-valued function, then it always preferred to use Inline Table-valued Function over the multi-statement table-valued function.
+
+
+Exception Handling - Error Information
+
+Error Number: The Error number is a unique identifier given for each and every error that occurs in SQL Server. This value will be below 50,000 for predefined errors and must be above 50,000 for error defined by the user.
+
+Error Message: It is a piece of brief information describing the error occurred which should be maxing from 2047 characters
+
+Severity Level: This tells about the importance of the error which can be ranging between 0 to 24. In which
+
+	0 to 9: are not serves which can be considered as information or status messages.
+	11 to 16:  Indicates these errors can be created by the user.
+	17 to 19: Indicates these are software errors that cannot be corrected by the user 		must be reported to the system administrator.
+	20 to 24: Indicates fatal errors and if these errors occur they can damage the system 		or database. So here the connection immediately terminates with the database.
+
+State: It is an arbitrary value that is not that important can be ranging between 0 to 127. We use this whenever the same error has to occur in multiple places.
+
+Syntax:
+
+Raiserror Syntax: Raiserror (errorid/errormsg, SEVERITY, state)
+
+throw Syntax: Throw errorid, errormsg, state
+
+--To add user defined messages to the sys.messages table use the below procedure
+
+--exec sp_addmessage <msg id/no>, <severity>, <message>
+
+The id of the message can be between 50000 and 2147483647. 
+The severity is the level of the message can be between 1 and 25. 
+For User Defined messages we can give a value of 0 to 19. 
+The severity level between 20 to 25 can be set by the administrator. 
+Severity levels from 20 through 25 are considered fatal. 
