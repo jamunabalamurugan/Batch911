@@ -1,0 +1,7 @@
+E:\Batch911\C# Day1\FirstPrj\FirstPrj\bin\Debug\FirstPrj.exe.config
+E:\Batch911\C# Day1\FirstPrj\FirstPrj\bin\Debug\FirstPrj.exe
+E:\Batch911\C# Day1\FirstPrj\FirstPrj\bin\Debug\FirstPrj.pdb
+E:\Batch911\C# Day1\FirstPrj\FirstPrj\obj\Debug\FirstPrj.csprojAssemblyReference.cache
+E:\Batch911\C# Day1\FirstPrj\FirstPrj\obj\Debug\FirstPrj.csproj.CoreCompileInputs.cache
+E:\Batch911\C# Day1\FirstPrj\FirstPrj\obj\Debug\FirstPrj.exe
+E:\Batch911\C# Day1\FirstPrj\FirstPrj\obj\Debug\FirstPrj.pdb

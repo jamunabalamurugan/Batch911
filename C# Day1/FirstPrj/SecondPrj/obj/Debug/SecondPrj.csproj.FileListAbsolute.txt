@@ -1,0 +1,7 @@
+E:\Batch911\C# Day1\FirstPrj\SecondPrj\bin\Debug\SecondPrj.exe.config
+E:\Batch911\C# Day1\FirstPrj\SecondPrj\bin\Debug\SecondPrj.exe
+E:\Batch911\C# Day1\FirstPrj\SecondPrj\bin\Debug\SecondPrj.pdb
+E:\Batch911\C# Day1\FirstPrj\SecondPrj\obj\Debug\SecondPrj.csprojAssemblyReference.cache
+E:\Batch911\C# Day1\FirstPrj\SecondPrj\obj\Debug\SecondPrj.csproj.CoreCompileInputs.cache
+E:\Batch911\C# Day1\FirstPrj\SecondPrj\obj\Debug\SecondPrj.exe
+E:\Batch911\C# Day1\FirstPrj\SecondPrj\obj\Debug\SecondPrj.pdb
