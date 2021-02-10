@@ -1,0 +1,23 @@
+Assignment -  Day 1
+
+1.Write a program in C# to accept the name of the user and greet the user as:
+	“Hi! username 
+	Welcome to the world of C#”
+
+
+2.Accept a number from the user and display whether the given number is an odd number or even number.
+
+
+3. Create a program, which accepts 3 numbers as input from the user and prints the largest and smallest of 3 numbers.
+
+
+4.Write a program which accepts marks of 5 students for C#,HTML and Sql (3 subjects),calculates the average and prints result as passed or failed
+If avg < 50 then failed else passed. 
+
+
+5.Write a program in C# to display temperature in Celsius. Accept the temperature in Fahrenheit.
+
+
+
+
+
