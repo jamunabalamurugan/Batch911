@@ -8,7 +8,7 @@ namespace FirstPrj
 {
     class Program
     {
-        static void Main(string[] args)
+       static  void Main(string[] args)
         {
            /* Console.WriteLine("Hello All ! Welcome to C Sharp Programming");
             Console.WriteLine("Please enter your Name:");
@@ -29,22 +29,23 @@ namespace FirstPrj
              Console.WriteLine(i);*/
 
             //try Parse
-            /* string str = "100ab";
+             string str = "100ab";
              int result = 0;
              bool status = int.TryParse(str, out result);
-             if(status)
-             {
-                 Console.WriteLine(result);
-             }
-             else
-             {
-                 Console.WriteLine("Invalid Data supplied");
-             }*/
+            if (status)
+            {
+                Console.WriteLine(result);
+            }
+            else
+            {
+                Console.WriteLine("Invalid Data supplied");
+            }
 
             //Nullable concepts
-            int? Ticketsonsale = 100;
+            int? Ticketsonsale = null; //or null
             int AT;
-            if(Ticketsonsale==null)
+            
+            /*if(Ticketsonsale==null)
             { 
                 AT = 0;
             }
@@ -52,8 +53,13 @@ namespace FirstPrj
             {
                // AT =(int) Ticketsonsale; // or
                AT = Ticketsonsale.Value;
-            }
+            }*/
+
+            //Null coalescing operator - ?? (ternary operations)
+            AT = Ticketsonsale ?? 0;
+                
             Console.WriteLine("Available Tickets = {0}", AT);
+            Console.WriteLine("With Build Errors");
             Console.Read();
         }
     }
