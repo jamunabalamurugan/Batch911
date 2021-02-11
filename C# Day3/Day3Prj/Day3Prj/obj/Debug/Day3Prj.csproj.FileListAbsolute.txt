@@ -1,0 +1,7 @@
+E:\Batch911\C# Day3\Day3Prj\Day3Prj\bin\Debug\Day3Prj.exe.config
+E:\Batch911\C# Day3\Day3Prj\Day3Prj\bin\Debug\Day3Prj.exe
+E:\Batch911\C# Day3\Day3Prj\Day3Prj\bin\Debug\Day3Prj.pdb
+E:\Batch911\C# Day3\Day3Prj\Day3Prj\obj\Debug\Day3Prj.csprojAssemblyReference.cache
+E:\Batch911\C# Day3\Day3Prj\Day3Prj\obj\Debug\Day3Prj.csproj.CoreCompileInputs.cache
+E:\Batch911\C# Day3\Day3Prj\Day3Prj\obj\Debug\Day3Prj.exe
+E:\Batch911\C# Day3\Day3Prj\Day3Prj\obj\Debug\Day3Prj.pdb

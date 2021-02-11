@@ -1,0 +1,59 @@
+OOPS - WYSWYG
+4 pillars
+1. Encapsulation -
+2. Abstraction - 
+3. Inheritance - 
+4. Polymorphism - 
+
+An object is one which has state and behaviour, that can also be describable or identifiable
+
+--access specifiers
+Private  - Full Restriction
+Public  - Full Access
+Protected  - For Derived Classes
+Internal -- Accesible only in the current assembly
+Protected Internal - Accessible to the non derived classes of the same assembly and the derived classes of the same or other assemblies.
+
+
+-All classes are internal by default
+-All Class members are private by default
+
+--Public access: Any assembly can access
+--Internal access : Only the assembly where an object or its members are declared internal can access
+
+--Private : No access outside the class 
+--Protected : Accessible between the class where it is declared and all the derived classes irrespective of the assemblies/projects
+--Protected Internal : Will work like protected between base and derived class and will work like internal for the non derived classes of the same assembly.
+
+
+-- Data Members to be private, and member Functions(methods) to be public
+
+Constructors : 
+1. Are special functions of the class with the same name as that of the class
+2. Constructors do not have return types
+3. They have to be declared as internal if you need to access it within the assembly, else declare it as public.
+ --  General way of programming is to declare the constructor as public (default)
+4. They can be overloaded
+5. They are used to allocate memory and may be initialize the data members
+6. By default the framework creates one constructor/class
+
+Overloaded Functions:
+
+void add(int x, int y){}
+void add(int x, int y, int z){}
+void add(string s, string s1){}
+int add(int a, int b) // not overloaded function (for a function to be overloaded, we have to have the difference in the number of arguments or the datatypes of the argument. Just if the return types are different, it will not be treated as an overloaded function)
+
+Destructors:
+1. It is a special function of the class
+2. It has to have the same name as that of a class
+3. Will prefix it with a ~(tilde)
+4. It is used to deallocate memory
+5. It cannot be overloaded
+6. Does not also return anything
+
+Inheritance
+
+Single Inheritance
+Multi Level Inheritance
+No Multiple Inheritance -- instead we can use Interfaces

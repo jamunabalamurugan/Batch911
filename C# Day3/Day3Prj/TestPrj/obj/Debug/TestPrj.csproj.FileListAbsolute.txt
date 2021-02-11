@@ -1,0 +1,11 @@
+E:\Batch911\C# Day3\Day3Prj\TestPrj\bin\Debug\TestPrj.exe.config
+E:\Batch911\C# Day3\Day3Prj\TestPrj\bin\Debug\TestPrj.exe
+E:\Batch911\C# Day3\Day3Prj\TestPrj\bin\Debug\TestPrj.pdb
+E:\Batch911\C# Day3\Day3Prj\TestPrj\bin\Debug\Day3Prj.exe
+E:\Batch911\C# Day3\Day3Prj\TestPrj\bin\Debug\Day3Prj.pdb
+E:\Batch911\C# Day3\Day3Prj\TestPrj\bin\Debug\Day3Prj.exe.config
+E:\Batch911\C# Day3\Day3Prj\TestPrj\obj\Debug\TestPrj.csprojAssemblyReference.cache
+E:\Batch911\C# Day3\Day3Prj\TestPrj\obj\Debug\TestPrj.csproj.CoreCompileInputs.cache
+E:\Batch911\C# Day3\Day3Prj\TestPrj\obj\Debug\TestPrj.csproj.CopyComplete
+E:\Batch911\C# Day3\Day3Prj\TestPrj\obj\Debug\TestPrj.exe
+E:\Batch911\C# Day3\Day3Prj\TestPrj\obj\Debug\TestPrj.pdb
