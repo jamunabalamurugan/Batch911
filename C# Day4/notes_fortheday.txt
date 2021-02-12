@@ -1,0 +1,50 @@
+Abstract Class :
+
+- A class that cannot be instantiated
+- Can have both Abstract and Non Abstract Methods
+- Is declared with abstract keyword
+- All derived classes of the abstract class will have to implement all the abstract methods using override keyword
+-----------------------------------
+Interfaces :
+
+--Interfaces are like classes, which contains properties, methods, delegates or events – but only declarations and no implementations.
+--Interface members are public by default
+--They do not allow explicit access modifiers
+--The class that inherits from an interface will have to provide implementation to all members
+--A class can inherit from multiple Interfaces
+--Interfaces can inherit from other Interfaces. 
+--We cannot create an instance of an interface, but a reference variable can point to derived class object
+
+----------------------------
+
+Advantages of Interface
+
+--It is used to achieve loose coupling.
+--It is used to achieve total abstraction.
+--To achieve component-based programming
+--To achieve multiple inheritance and abstraction.
+--Interfaces add a plug and play like architecture into applications
+
+------------------------------------
+Explicit Implemenatation of Interface
+
+--When a class inherits from 2 interfaces, and both the interfaces have the same method name and signature,explicit implementation is needed. 
+
+--When a class explicitly implements an interface member, the interface member can no longer be accessed thru class reference variable, but only thru interface reference variable
+
+--Access modifiers are not allowed on explicitly implemented members
+
+--To make one of the interface method, the default, then implement that method normally, and the other explicitly. 
+This makes the default method to be accessed thru class instance.
+
+
+
+
+Assemblies
+
+.Exe Assemblies can be executed
+.dll assemblies cannot be executed directly, instead they will need and .exe assembly to execute
+DLLs are created to include functionalities that can be used by others, without having to recreate
+
+
+

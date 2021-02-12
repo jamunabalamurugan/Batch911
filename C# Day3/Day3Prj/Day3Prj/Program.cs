@@ -48,11 +48,11 @@ namespace Day3Prj
             EmpName = Console.ReadLine();
             Salary = float.Parse(Console.ReadLine());
         }
-        ~Employee()
+       /* ~Employee()
         {
 
           Console.WriteLine("Bye from the Destructor");
-        }
+        }*/
 
     }
     class Program

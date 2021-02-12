@@ -1,5 +1,5 @@
 ﻿using System;
-
+using MyDLL;
 
 
 namespace Day3Prj

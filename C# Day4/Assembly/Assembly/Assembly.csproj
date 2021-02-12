@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8D841127-3C39-4130-8FDE-D03244144EFA}</ProjectGuid>
+    <ProjectGuid>{8306FD32-78B5-4156-86D2-C0843820BE06}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Day3Prj</RootNamespace>
-    <AssemblyName>Day3Prj</AssemblyName>
+    <RootNamespace>Assembly</RootNamespace>
+    <AssemblyName>Assembly</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,13 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>Day3Prj.OverridingEg</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MyDLL">
-      <HintPath>..\..\..\C# Day4\Day4Prj\MyDLL\bin\Debug\MyDLL.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,12 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InheritanceEg.cs" />
-    <Compile Include="NamehidingEg.cs" />
-    <Compile Include="OverridingEg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

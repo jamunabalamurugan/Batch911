@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 
 namespace Day3Prj
 {
-    class Shape
+    abstract class Shape
     {
         protected float R, L, B;
 
         public virtual float Area()
         {
-            Console.WriteLine("Reached Base class Area");
-            return 3.14F * R * R;
+          Console.WriteLine("Reached Base class Area");
+           return 3.14F * R * R;
         }
 
         public virtual float Circumference()
         {
             return 2 *  R;
         }
+
+                   
     }
 
     class Rectangle : Shape
@@ -37,6 +39,7 @@ namespace Day3Prj
            // base.Area();
             return L * B;
         }
+       
 
         public override float Circumference()
         {
@@ -53,11 +56,19 @@ namespace Day3Prj
 
         }
     }
+
+    class Semicircle : Circle
+    {
+       public void show()
+        {
+            Console.WriteLine(L);
+        }
+    }
     class OverridingEg
     {
         static void Main()
         {
-         
+          //  Shape s = new Shape();
             Rectangle r = new Rectangle();
             r.GetLB();
             Console.WriteLine("Area : {0}", r.Area());
