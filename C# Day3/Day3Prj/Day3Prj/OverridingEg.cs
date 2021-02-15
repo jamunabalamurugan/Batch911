@@ -68,7 +68,8 @@ namespace Day3Prj
     {
         static void Main()
         {
-          //  Shape s = new Shape();
+            Shape s = new Rectangle();
+            s.Area();
             Rectangle r = new Rectangle();
             r.GetLB();
             Console.WriteLine("Area : {0}", r.Area());
