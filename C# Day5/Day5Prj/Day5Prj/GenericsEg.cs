@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace Day5Prj
 {
-    class Employee 
+    class Employee : IComparable
     {
         int Empid;
         String Empname;
         string Company;
         float Sal;
 
+        public int CompareTo(Employee second)
+        {
+            if(this.Sal==second.Sal)
+            {
+                return this.Empid.CompareTo(second.Empid);
+            }
+            return second.Sal.CompareTo(this.Sal);
+        }
         public Employee(int id, string name, string co, float sal)
         {
             Empid = id;
