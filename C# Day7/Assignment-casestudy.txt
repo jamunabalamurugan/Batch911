@@ -1,0 +1,26 @@
+Case Study Day 4 Plan
+
+- We had created an AppEngine class before to store data in memory.
+- All we need to do now is to modify that code and introduce database connectivity.
+
+For ex: the code for register method might look like this 
+
+    public void register(Student student) {
+		SqlConnection conn = null;
+		SqlCommand cmd = null;
+		try {
+			con=new SqlConnection("Data Source=  ; Initial Catalog=;Integrated Security=true");
+			//Take inputs from the user
+			cmd= new SqlCommand("insert into student values(@,@,@)",con);
+			//Add parameters
+			
+			//Execute
+		}
+		catch(Exception e) {
+			Console.Write(); //instead throw user defined exception
+		}
+		finally {
+			
+		}
+    }
+
