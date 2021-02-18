@@ -80,9 +80,9 @@ namespace BasicADOPrg
             SqlCommand cmd1 = new SqlCommand("select * from tblEmployee where ID=@id");
             cmd1.Parameters.AddWithValue("@id", eid);
             cmd1.Connection = con;
-            // SqlDataReader dr1 = cmd1.ExecuteReader();
-            int r=cmd1.ExecuteNonQuery();
-            Console.WriteLine(r);
+             SqlDataReader dr1 = cmd1.ExecuteReader();
+            //int r=cmd1.ExecuteNonQuery();
+           // Console.WriteLine(r);
             //while(dr1.Read())
             //{
             //    for(int i=0; i<dr1.FieldCount; i++)
@@ -98,15 +98,16 @@ namespace BasicADOPrg
                 cmd = new SqlCommand("delete from tblEmployee where ID=@id",con);
                 cmd.Parameters.AddWithValue("@id", eid);
                 con.Open();
-                cmd.ExecuteReader();
-                //if(res > 0)
-                //{
-                //    Console.WriteLine("Record deleted successfully");
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Unable to delete ");
-                //}
+                int res=cmd.ExecuteNonQuery();
+                // cmd.ExecuteReader();
+                if (res > 0)
+                {
+                    Console.WriteLine("Record deleted successfully");
+                }
+                else
+                {
+                    Console.WriteLine("Unable to delete ");
+                }
             }
           
         }
