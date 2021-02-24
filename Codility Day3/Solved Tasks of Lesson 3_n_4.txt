@@ -1,0 +1,153 @@
+// Tape Equilibrium
+
+public int solution(int[]A)
+{
+int N=A.Length;
+int sum1=A[0];
+int sum2=A.Sum()-A[0];
+int min_diff=Math.Abs(sum1-sum2);
+
+for(int i=1;i<N-1;i++)
+{
+sum1+=A[i];
+sum2-+A[i];
+min_diff = Math.Min(min_diff, Math.Abs(sum1-sum2));
+}
+return min_diff;
+}
+ 
+
+//Frog River One
+
+  A[0] = 1
+  A[1] = 3
+  A[2] = 1
+  A[3] = 4
+  A[4] = 2
+  A[5] = 3
+  A[6] = 5
+
+A[3,2,4,7,2,5,1,4,6]
+  0 1 2 3 4 5 6 7 8 [Index Positions]
+X=7
+1,2,3,4,5,6,7  - Will have to check for the sequence and return the position which helps to complete the sequence else -1.
+
+1..X - from number 1 till whatever is X
+
+public int solution(int X, int[]A)
+{
+HashSet<int> path=new HashSet<int>();
+for(int i=0; i<A.Length;i++)
+{
+if(A[i]<=X)
+path.Add(A[i]);
+if(path.Count==X)
+return i;
+}
+return -1;
+}
+
+//2. approach
+public int solution(int X, int[]A)
+{
+HashSet<int> hs=new HashSet<int>();
+int sum=0;
+int n= X*(X+1)/2;
+for(int i=0; i<A.Length;i++)
+{
+if(!hs.Contains(A[i]))
+{
+hs.Add(A[i];
+sum=sum+A[i];
+}
+if(sum==n)
+return i;
+}
+return -1;
+}
+
+//maxcounters
+
+public int[] solution(int N, int[]A)
+{
+int min=0, max=0;
+int[]counter=new int[N];
+for(int i=0; i<A.Length;i++)
+{
+if(A[i]>=1 && A[i]<=N)
+{
+if (counter[A[i] - 1] < min)
+{ 
+counter[A[i] -1] = min;
+}
+counter[A[i] -1]++;
+if(counter[A[i] -1] > max)
+{
+max=counter[A[i] -1];
+}
+else
+{
+min=max;
+}
+}
+
+for(int j=0;j<counter.Length;j++)
+{
+if(counter[J]<min)
+{
+counter[j]=min;
+}
+}
+return counter;
+}
+}
+
+
+//2nd approach
+
+int[] arr=new int[N];
+int index=0;
+int max=0;
+int count=0;
+
+for(int i=0;i<A.Length;i++)
+{
+index= A[i] -1;
+if(index==N)
+{
+max=count;
+}
+else
+{
+arr[index]=Math.Max(arr[index],max);
+arr[index]+=1;
+if(count<arr[index])
+{
+count=arr[index];
+}
+}
+
+for(int i=0; i<arr.Length;i++)
+{
+arr[i]=Math.Max(arr[i],max)
+}
+return arr;
+}
+
+Longest Happy String
+
+state of all a,b,c and the s
+
+a=2, b=2,c=1
+s=aabbc or
+s=abcab or
+s=aacbb or
+s=abbca or abbac
+s=caabb or cbbaa or cabab  or cbaba  
+
+
+
+
+
+
+

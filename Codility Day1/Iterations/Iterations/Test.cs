@@ -49,6 +49,10 @@ namespace Iterations
             {
                 Console.WriteLine(v);
             }
+
+            List<string> str = new List<string>();
+            str.Add("45");
+
             Console.Read();
         }
     }

@@ -1,0 +1,226 @@
+
+//Binary Gap - testing with split
+
+public int solutin(int N)
+{
+string binarystring=Convert.tostring(N,2);
+string[] subzeros=binarystring.Split('1');
+int maxcount=0;
+
+for(int i=1;i<(subzeros.Length -1);i++)
+{
+if(subzeros[i].Length>maxcount)
+{
+maxcount=subzeros[i].Length;
+}
+}
+return maxcount;
+}
+
+
+//Reversal of the Array
+
+public static void Main()
+{
+int i,n;
+int[]a=new int[100];
+//no.of elements to store
+n=convert.ToInt32(Console.ReadLine());
+//to input elements into the array
+for(i=0;i<n;i++)
+{
+console.WriteLine("Element - {0}",i);
+a[i]=convert.ToInt32(Console.ReadLine());
+}
+//to display values of the array
+
+for(i=0;i<n;i++)
+{
+Console.WriteLine(a[i]);
+}
+//to reverse the elements of the array
+for(i=n;i>=0;i--)
+{
+Console.Write(a[i]);
+}
+}
+
+//Cyclic Rotation
+4,5,8,9,2,3
+3,4,5,8,9,2
+2,3,4,5,8,9
+9,2,3,4,5,8
+8,9,2,3,4,5
+5,8,9,2,3,4
+5,5,8,9,2,3
+
+public int[] solution(int[] A, int K)
+{
+while(K>0 && A.Length>0)
+{
+int[]arr1 = A.Take(A.Length - K).ToArray();
+int[]arr2 = A.Skip(A.Length - K).ToArray();
+A=arr2.Concat(arr1).ToArray();
+K-=A.Length;
+}
+return A;
+}
+
+//Odd-Occurence
+
+class Solution {
+    public int solution(int[] A) {
+        
+        HashSet<int> hash = new HashSet<int>();
+        for(int i=0; i<A.Length; i++){
+            if(hash.Contains(A[i]))
+            {
+                hash.Remove(A[i]);
+            }
+            else{
+                hash.Add(A[i]);
+            }
+        }
+        foreach(int i in hash) 
+        {
+            return i;
+        }
+        return 0;
+    }
+}
+
+//2nd approach using Dictionary
+
+public int solution(int[]A)
+{
+Dictionary<int,int>mydic=new Dictionary<int><int>();
+
+foreach(int i in A)
+{
+if (mydic.ContainsKey(i))
+{
+mydic[i]++;
+}
+else
+{
+mydic.Add(i,1);
+}
+}
+
+foreach(KeyValuePair<int><int> k in mydic)
+{
+if(k.Value%2!=0)
+{
+return k.Key;
+}
+}return 0;
+}
+}
+
+//3rd approach
+
+Array.Sort(A);  
+int i;
+ for ( i = 0; i < A.Length - 1 && A[i] == A[i + 1]; i += 2) ; 
+ return A[i];
+
+
+
+
+//frog jump
+
+if((y-x>0 && (d>0))
+if((y-x)%d==0)
+return (y-x)/d;
+return (y-x)/d+1;
+
+
+if(y-x>0)
+return Math.Ceiling((double)(y-x)/d);
+
+
+double z=y-x;
+double jumps =(z/d);
+return (int)Math.Ceiling(jumps);
+
+
+//missing permelem
+
+1. public int solution(int[]A)
+    {
+        // write your code in C# 6.0 with .NET 4.5 (Mono)
+        int N;
+       
+         N = A.Length+ 1;
+         int Sum_N = (N * (N+1)) / 2;
+         int Sum_A = A.Sum();
+         return Sum_N - Sum_A;
+       
+    }
+
+//2.
+
+ int i;  
+var s=0; 
+ for(i=0;i<A.Length;i++)  
+s+=A[i];  
+return A.Length%2==0?-s+(A.Length/2+1)*(A.Length+1):-s+(A.Length/2+1)*(A.Length+2);
+
+
+
+//3. 
+
+ A[0] = 2    1  2  2  
+  A[1] = 3   2  4  3
+  A[2] = 1   3  3  4
+  A[3] = 5   5  5  5
+
+public int solution(int[]A)
+{
+Array.Sort(A);
+if(A.Length>0)
+{
+if(A[0]!=1 || A[i]!=0)
+return 1;
+else
+{
+for(int i=0; i<A.Length-1;i++)
+{
+if(A[i+1]-A[i]>1)
+return A[i]+1;
+}
+}
+return A.Length+1;
+}
+return 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
