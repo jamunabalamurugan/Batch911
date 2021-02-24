@@ -25,7 +25,7 @@ namespace Day5Prj
                 Console.WriteLine(c);
                 Console.Read();
             }
-            
+           
             /*catch(DivideByZeroException e)
             {
                 Console.WriteLine(e.Source +" " +e.Message);

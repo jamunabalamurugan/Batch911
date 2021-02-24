@@ -1,0 +1,7 @@
+1) https://practice.geeksforgeeks.org/problems/product-array-puzzle/0
+
+2)
+https://leetcode.com/problems/longest-happy-string/
+
+3) https://leetcode.com/problems/kth-largest-element-in-an-array/
+
