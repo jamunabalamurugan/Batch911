@@ -1,0 +1,89 @@
+//Disc Intersections
+
+public int solution(int[]A)
+{
+int[] discStart=new int[A.Length];
+int[] discEnd = new int[A.Length];
+
+for(int i=0; i<A.Length;i++)
+{
+if(A[i]==Int32.MaxValue)
+{
+discStart[i]=0-A[i];
+discEnd[i]=0+A[i];
+}
+else
+{
+discStart[i]= i-A[i];
+discEnd[i]=i+A[i];
+}
+Array.Sort(discStart);
+Array.Sort(discEnd);
+
+int result=0;
+int j=0;
+
+for(int i=0; i<A.Length; i++)
+{
+while(j<A.Length && discStart[j]<=discEnd[i])
+{
+result += j;
+result -= i;
+j++;
+}
+}
+
+if(result>10000000)
+{
+return -1;
+}
+return result;
+
+//Brackets soln. 1
+
+public int solution(string S)
+{
+Stack<char> brackets = new Stack<char>();
+char temp;
+for(inti=0;i<S.Length;i++)
+{
+if(S[i]=='{' || S[i]=='[' || S[i]=='(')
+brackets.Push(S[i]);
+else
+if(brackets.Count==0)
+return 0;
+temp=brackets.Pop();
+if((temp=='{' && S[i]!='}') || (temp=='[' && S[i]!=']') || (temp=='(' && S[i]!=')'))
+return 0;
+}
+if(brackets.Count!=0)
+return 0;
+return 1;
+}
+}
+
+//2nd soln.
+
+Stack<char> stack= new Stack<char>();
+for(inti=0; i<S.Length;i++)
+{
+if(S[i]=='{' || S[i]=='[' || S[i]=='(')
+stack.Push(S[i]);
+else if(S[i]==')' && stack.Count!=0 && stack.Peek()=='(')
+stack.Pop();
+else if(S[i]=='}' && stack.Count!=0 && stack.Peek()=='{')
+stack.Pop();
+else if(S[i]==']' && stack.Count!=0 && stack.Peek()=='[')
+stack.Pop();
+else 
+return 0;
+}
+if(stack.Count!=0)
+return 0;
+return 1;
+}
+
+
+
+
+ 

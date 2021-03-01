@@ -1,0 +1,72 @@
+//Passing Cars
+
+public int solution(int[]A)
+{
+int l=A.Length;
+int countzero=0;
+int exceed =1000000000;
+int countpairs=0;
+
+for(int i=0;i<l;i++)
+{
+if(A[i]==1) 
+countpairs+=countzero;
+else
+countzero++;
+}
+if(countpairs >exceed ||countpair<0)
+return -1;
+else
+return countpairs;
+}
+
+//2nd approach
+public int solution(int[]A)
+{
+int car0=0;
+double cpair=0;
+for(int i=0;i<A.Length;i++)
+{
+if(A[i]==0)
+{
+car0=car0+1;
+}
+else
+cpair=cpair+car0;
+
+if(cpair>1000000000)
+{
+return -1;
+else
+return(int)cpair;
+}
+}
+}
+
+
+
+A[P] + A[Q] > A[R],  A[P]=10, A[Q]=2, A[R]=5 (is 10+2 > 5 = yes, then A[P] can be considered to be able to form a triangle) 
+A[Q] + A[R] > A[P],   
+A[R] + A[P] > A[Q].   
+
+  A[0] = 10    A[1] = 2    A[2] = 5
+  A[3] = 1     A[4] = 8    A[5] = 20
+Triplet (0, 2, 4) is triangular.
+
+//On sorting of the array, we get the below
+
+1,2,5,8,10,20  
+
+A[P]+A[Q]>A[R] 1+2>5? no
+               2+5>8? no
+               5+8>10? yes
+               8+10>20? no
+              
+
+
+
+
+
+
+
+

@@ -1,0 +1,146 @@
+//Selection Sort
+
+int[]arr=new int[10]
+{
+  1,5,4,11,20,8,2,98,90,16
+};
+mySort(arr);
+Console.WriteLine("Sorted Values");
+for(int i=0;i<arr.Length;i++)
+{
+Console.WriteLine(arr[i]);}
+
+void mySort(int[] arr)
+{
+int i,j,min;
+for(i=0; i<arr.Length;i++)
+{
+min=i;
+for(j=0;j<arr.Length;j++)
+{
+if(arr[j]>arr[min])
+{
+min=j;
+mySwap(ref arr[i],ref arr[min]);
+}
+}
+}
+}
+
+void mySwap(ref int x, int y)
+{
+int temp=x;
+x=y;
+y=temp;
+}
+
+//counting Sort
+
+int[]arr=new int[10]{1,5,4,11,20,8,2,98,90,16};
+int[]sortedArray=CountingSort(arr);
+
+for(int i=0;i<sortedArray.Length;i++)
+{
+CW(sortedArray[i]);
+}
+
+public int[] CountingSort(int[] array)
+{
+//find the smallest and the largest value
+int minval=array[0];
+int maxval=array[0];
+for(int i=1;i<array.Length;i++)
+{
+if(array[i]<minval)
+minval=array[i];
+else
+if(array[i]>maxval)
+maxval=array[i];
+}
+
+//init array of frequencies
+int[]counts= new int[maxval-minval +1];
+
+//init frequencies
+
+for(int i=0;i<array.Length;i++)
+{
+counts[array[i]-minval]++;
+}
+
+//recalculate
+
+counts[0]--;
+for(int i=1;i<counts.Length;i++)
+{
+counts[i]=counts[i]+counts[i-1];
+}
+
+//sort the array
+for(int i=array.Length-1;i>=0;i--)
+{
+sortedArray[counts[array[i]-minval]]=array[i]
+}
+return sortedArray;
+}
+
+
+//Merge Sort
+
+int[]arr= new int[10]{1,5,4,11,20,8,2,98,90,16};
+
+MergeSort(arr,0,arr.Length-1);
+
+//sorted values printed
+for(int i=0;i<arr.Length;i++)
+{
+CW(arr[i]);
+}
+
+private void MergeSort(int[] input,int left,int right)
+{
+if(left<right)
+{
+int middle=(left+right)/2;
+MergeSort(input,left,middle);
+MergeSort(input,middle+1,right);
+
+Merge(input,left,middle,right);
+}
+}
+
+private void Merge(int[] input,int left, int middle, int right)
+{
+int[]leftArray = new int[middle - left + 1];
+int[]rightArray = new int[right-middle];
+Array.Copy(input,left,leftArray,0,middle-left +1);
+
+Array.Copy(input,middle+1,rightArray,0,right-middle);
+
+int i=0,j=0;
+for(int k=left;k<right+1;k++)
+{
+if(i==leftArray.Length)
+{
+input[k]=rightArray[j];
+j++;
+}
+else if(j==rightArray.Length)
+{
+input[k]==leftArray[i];
+i++
+}
+else if(leftArray[i]<=rightArray[j])
+{
+input[k]=leftArray[i];
+i++;
+}
+else
+{
+input[k]=rightArray[j];
+j++;
+}
+}
+}
+
+
